@@ -1,34 +1,19 @@
 package org.example
 
+
 import org.example.app.App
 import org.example.ui.Consola
-import java.io.File
+import org.example.utils.Ficheros
 
 fun main(args: Array<String>) {
-
-    print("PRUEBA DE EJECUCIÓN")
     val consola = Consola()
-    when (args.size) {
-        0 -> {
-            val file = File("./log")
-            consola.mostrar("Ruta ./log creada")
-        }
-        1 -> {
-            return
-            /*val ruta = args[1]
-            val file = File("./$ruta")
-            consola.mostrar("Ruta ./$ruta creada")*/
-        }
-        4 -> {
-            return
-            /*val file = File("./log/${args[1]}")*/
-        }
-        else -> return
-    }
+    val ficheros = Ficheros(consola)
+    val app = App(consola, ficheros)
 
-    App(consola).iniciar()
+    app.ejecutarConArgumentos(args)
 
-    // list files
-    // last modified
+    consola.mostrar("Pulsa ENTER para continuar...")
+    readLine()
 
+    app.iniciarCalculadora()
 }

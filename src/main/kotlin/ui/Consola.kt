@@ -7,7 +7,7 @@ class Consola : IEntradaSalida {
     private val scanner = Scanner(System.`in`)
 
     override fun pedirInfo(mensaje: String): String {
-        mostrar(mensaje)
+        print(mensaje)
         return scanner.nextLine()
     }
 
@@ -16,12 +16,12 @@ class Consola : IEntradaSalida {
     }
 
     override fun mostrarError(error: String) {
-        System.err.println("ERROR: $error")
+        System.err.print("ERROR: $error")
     }
 
     override fun pedirDouble(prompt: String): Double {
         while (true) {
-            mostrar(prompt)
+            print(prompt)
             val entrada = readlnOrNull()
             try {
                 return entrada?.toDouble() ?: throw NumberFormatException()
